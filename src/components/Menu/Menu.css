@@ -1,0 +1,6 @@
+.menu-item:hover{
+    border-bottom: 3px solid blue!important;
+}
+.drop-width{
+    min-width: 2rem!important;
+}

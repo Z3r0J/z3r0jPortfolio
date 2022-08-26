@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Noto+Emoji&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Poppins&family=Lato&display=swap');
+
+@font-face {
+    font-family: 'Noto Color Emoji';
+    src: url(https://raw.githack.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoji.ttf);
+  }
+
+*{
+    font-family: 'Barlow','Noto Color Emoji','sans-serif';
+}
+
+body{
+    background: #212529fc!important;
+}

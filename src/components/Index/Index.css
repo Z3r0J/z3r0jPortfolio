@@ -1,0 +1,11 @@
+.name-style{
+    font-size: 3.5rem!important;
+    background-image: linear-gradient(to left, rgb(15 153 109), rgb(68 110 125));
+    background-repeat: repeat-x;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.text-style{
+    letter-spacing: 2px;
+}
