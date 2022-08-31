@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import './Index.css'
 import { Languages } from '../Languages/Languages';
 
-export const Index = () =>{
+const Index = () =>{
   return(
     <div className='container-fluid mt-4'>
       <div className='row justify-content-center'>
@@ -43,3 +43,5 @@ export const Index = () =>{
     </div>
   )
 }
+
+export default Index;

@@ -1,6 +1,6 @@
 import { React } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Index } from "../components/Index/Index";
+import Index  from "../components/Index/Index";
 import { Languages } from "../components/Languages/Languages";
 
 const Router = () => {

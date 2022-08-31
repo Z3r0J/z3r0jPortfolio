@@ -15,12 +15,12 @@ export const Menu = () =>{
         <li className="nav-item">
           <a className="nav-link text-white fs-6 menu-item" aria-current="page" href="#">Home</a>
         </li>        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           🇺🇸
           </a>
-          <ul class="dropdown-menu drop-width bg-dark">
-            <li><a class="dropdown-item" href="#">🇪🇸</a></li>
+          <ul className="dropdown-menu drop-width bg-dark">
+            <li><a className="dropdown-item" href="#">🇪🇸</a></li>
           </ul>
         </li>
       </ul>

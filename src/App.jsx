@@ -1,8 +1,13 @@
-import Router from './router/Router'
+import React from 'react'
+import Spinner from './components/Spinner/Spinner';
 
-function App() {
-  return (
-    <Router/>
+const Router = React.lazy(() => import('./router/Router'));
+
+const App = ()=> {
+    return (
+      <React.Suspense fallback={<Spinner/>}>
+        <Router/>
+      </React.Suspense>    
   )
 }
 
