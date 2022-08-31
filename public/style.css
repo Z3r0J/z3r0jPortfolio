@@ -11,5 +11,6 @@
 }
 
 body{
-    background: #212529fc!important;
+    background: #192732!important;
+    overflow:auto;
 }
