@@ -2,13 +2,15 @@ import { React } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index  from "../components/Index/Index";
 import { Languages } from "../components/Languages/Languages";
+import { Footer } from "../components/Footer/Footer";
 
 const Router = () => {
     return (
         <BrowserRouter>
         <Routes>
             <Route path="/" element={<Index/>}></Route>            
-            <Route path="/languages" element={<Languages/>}></Route>
+            <Route path="/languages" element={<Languages/>}></Route>            
+            <Route path="/footer" element={<Footer/>}></Route>
         </Routes>
         </BrowserRouter>
     )

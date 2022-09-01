@@ -1,4 +1,4 @@
-const programminglang=[{
+const ProgrammingLang=[{
     name:'C#',
     experience:80,
     color:'primary',
@@ -67,4 +67,4 @@ const programminglang=[{
     type:'front-end'
 }]
 
-export default programminglang;
+export default ProgrammingLang;
