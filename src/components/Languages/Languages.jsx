@@ -1,5 +1,4 @@
 import { React } from 'react'
-import './Languages.css'
 import ProgrammingLang from '../../helpers/ProgrammingLang'
 
 export const Languages = () =>{

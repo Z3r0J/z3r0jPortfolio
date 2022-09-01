@@ -1,16 +1,14 @@
 import { React } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index  from "../components/Index/Index";
-import { Languages } from "../components/Languages/Languages";
-import { Footer } from "../components/Footer/Footer";
+import { SocialLinks } from "../components/SocialLinks/SocialLinks";
 
 const Router = () => {
     return (
         <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Index/>}></Route>            
-            <Route path="/languages" element={<Languages/>}></Route>            
-            <Route path="/footer" element={<Footer/>}></Route>
+            <Route path="/" element={<Index/>}/>
+            <Route path="/social" element={<SocialLinks/>}/>
         </Routes>
         </BrowserRouter>
     )
