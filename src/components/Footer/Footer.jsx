@@ -6,7 +6,7 @@ export const Footer = () =>{
     let date = new Date();
     let siteName = "<Jean Carlos/>";
     return(
-        <footer className="footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top bg-dark w-100 position-absolute" style={{height:"145px",bottom:"40px;"}}>
+        <footer className="footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top bg-dark w-100 position-absolute" style={{height:"145px"}}>
             <div className="col-md-4 d-flex align-items-center">
                 <img src="/icon_jc.png" style={{width:"32px"}}/>
                 <span className="text-white ms-3 h4">&copy; {date.getFullYear()} {siteName}</span>
@@ -14,7 +14,6 @@ export const Footer = () =>{
             <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
                 {
                     SocialNetwork.map(sn=>{
-                        console.log(sn.icon)
                         return(
                             <li className="ms-2 me-2">
                             <a className={sn.class} href={sn.url} target="_blank">
