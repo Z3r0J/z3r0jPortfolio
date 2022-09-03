@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import './Index.css'
 import { Languages } from '../Languages/Languages';
 import { Contacts } from '../Contacts/Contacts';
+import Text from '../../helpers/lang/Text';
 
 const textAnimate = {
   offscreen:{
@@ -42,16 +43,16 @@ const Index = () =>{
               viewport={{once:true, amount:1}}
               transition={{staggerChildren:1}}
               className='col-xl-6 col-lg-6 col-md-12'>
-                <motion.span variants={textAnimate} className='fw-700 h5 text-style'>Welcome to my Portfolio, I'm... 🇩🇴👋</motion.span>
+                <motion.span variants={textAnimate} className='fw-700 h5 text-style'><Text tid={"welcomeMessage"}/></motion.span>
                 <motion.h3 variants={textAnimate} className='fw-bolder mt-2 mb-2 name-style'>JEAN CARLOS<br/>REYES</motion.h3>
                 <motion.p variants={textAnimate}>
-                A Passionate .NET FullStack Developer from a Beautiful Island in the Caribbean Sea &nbsp;&nbsp; 🇩🇴 (Dominican Republic)
+                <Text tid={"firstHistory"}/>
                 <br/>
                 <br/>
-                  With Experience in different Languages and Frameworks Like React for the Front-End and ASP.NET to build website and Restful API using (C#) for the Back-End.
+                <Text tid={"secondHistory"}/>
                   <br />
                   <br />
-                  My Journey through the programming started when i was 10 years old for a game, past the time i learned HTML, CSS, JS after that learned C# in high school and improved on that programming language at ITLA. 
+                  <Text tid={"thirdHistory"}/>
                 </motion.p>
                 <a href='#' className='btn btn-success rounded-2 shadow shadow-2 me-2'><FcFile/> Resume</a>
                 <a href='#' className='btn btn-light rounded-2 shadow shadow-2'><FcComments/> Contacts</a>

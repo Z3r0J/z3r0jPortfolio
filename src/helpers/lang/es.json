@@ -1,4 +1,10 @@
 {
+    "loading":"Cargando...",
+    "welcomeMessage":"Bienvenido a mi portafolio, soy... 🇩🇴👋",
+    "firstHistory":"Un apasionado Desarrollador .NET Full Stack desde una hermosa Isla en el Mar Caribe\n\n\n🇩🇴 (República Dominicana)",
+    "secondHistory":"Con experiencia en diferentes lenguajes de programación, framework y librerias como React para el Front-End y ASP.NET para construir aplicaciones web y Restful API usando (C#) para el Back-End.",
+    "thirdHistory":"Mi jornada a través de la programación comenzó cuando tenía 10 años de edad por un juego, pasado el tiempo aprendí HTML, CSS y JS, después de eso aprendí C# en la secundaria y mejorando en dicho lenguaje de programación en ITLA.",
     "navHome":"Inicio",
+    "navProjects":"Proyectos",
     "programmingLang":"Lenguajes de Programacion y Herramientas"
 }

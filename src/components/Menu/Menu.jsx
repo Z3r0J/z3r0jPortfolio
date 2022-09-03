@@ -10,19 +10,23 @@ export const Menu = () =>{
     const { handleChangeLanguages, actualLanguage } = useContext(LangContext);
 
     return(
-        <nav className="navbar navbar-expand-lg bg-dark ">
+      <nav className="navbar navbar-expand-lg bg-dark text-white">
   <div className="container-fluid">
     <a className="navbar-brand text-white fs-2 fw-700" href="#"><span className="text-primary">{title[0]}</span><span className="text-danger">{title[1]}</span></a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
+      <span className="navbar-toggler-icon text-white"></span>
     </button>
     <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link text-white fs-6 menu-item" aria-current="page" href="#"><Text tid='navHome'/></a>
-        </li>        
+          <a className="nav-link text-white fs-6 menu-item" aria-current="page" href="/"><Text tid='navHome'/></a>
+        </li>       
+        
+        <li className="nav-item">
+          <a className="nav-link text-white fs-6 menu-item" aria-current="page" href="/projects"><Text tid='navProjects'/></a>
+        </li> 
         <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a className="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           {actualLanguage==="en"?"🇺🇸":"🇩🇴"}
           </a>
           <ul className="dropdown-menu drop-width bg-dark">
