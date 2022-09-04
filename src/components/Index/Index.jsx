@@ -5,6 +5,7 @@ import './Index.css'
 import { Languages } from '../Languages/Languages';
 import { Contacts } from '../Contacts/Contacts';
 import Text from '../../helpers/lang/Text';
+import { Footer } from '../Footer/Footer';
 
 const textAnimate = {
   offscreen:{
@@ -64,6 +65,7 @@ const Index = () =>{
       </div>
       <Languages/>
       <Contacts/>
+      <Footer/>
     </div>
   )
 }

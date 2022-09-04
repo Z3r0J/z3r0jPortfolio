@@ -56,8 +56,8 @@ export const Languages = () =>{
               whileInView={"onscreen"}
               viewport={{once:false, amount:1}}
               transition={{staggerChildren:0.5}} className='col-lg-4 col-md-12 mt-3' key={lang.name}>
-              <motion.div variants={cardAnimate} className='card bg-dark shadow shadow-2 border border-dark text-white'>
-                <div className='card-body'>
+              <motion.div variants={cardAnimate} className='card bg-dark shadow shadow-2 text-white'>
+                <div className={`card-body border-bottom border-${lang.color} border-3`}>
                   <motion.div variants={textAnimate} className='card-title'>{lang.name}</motion.div>
                   <div className='progress'>
                     <motion.div variants={bar} className={`progress-bar bg-${lang.color}`} role='progressbar' aria-label={lang.name} aria-valuenow={lang.experience} aria-valuemin='0' aria-valuemax='100' style={{width:`${lang.experience}%`}}>{lang.name}

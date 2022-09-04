@@ -2,6 +2,7 @@ import React from "react";
 import './SocialLinks.css';
 import SocialNetwork from "../../helpers/SocialNetwork";
 import { FaLinkedin,FaGithub,FaInstagram } from "react-icons/fa";
+import { Footer } from '../Footer/Footer';
 
 export const SocialLinks = () =>{
     return (
