@@ -19,8 +19,3 @@ body{
     flex-direction:column;
     min-height: 100vh;
 }
-@media only screen and (min-height: 1080px) {
-    .bottom-footer{
-        bottom:0!important;
-    }
-}
