@@ -6,5 +6,7 @@
     "thirdHistory":"Mi jornada a través de la programación comenzó cuando tenía 10 años de edad por un juego, pasado el tiempo aprendí HTML, CSS y JS, después de eso aprendí C# en la secundaria y mejorando en dicho lenguaje de programación en ITLA.",
     "navHome":"Inicio",
     "navProjects":"Proyectos",
-    "programmingLang":"Lenguajes de Programacion y Herramientas"
+    "programmingLang":"Lenguajes de Programacion y Herramientas",
+    "emailSuccess":"el correo fue enviado correctamente, estare en contacto pronto...",
+    "emailError":"algo salio mal..."
 }

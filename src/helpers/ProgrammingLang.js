@@ -1,20 +1,20 @@
 const ProgrammingLang=[{
     name:'C#',
-    experience:80,
+    experience:88,
     color:'primary',
     type:'backend'
 
 },
 {
     name:'ASP .NET',
-    experience:75,
+    experience:80,
     color:'danger',
     type:'backend'
 
 },
 {
     name:'GIT',
-    experience:55,
+    experience:70,
     color:'secondary',
     type:'tools'
 
@@ -62,7 +62,7 @@ const ProgrammingLang=[{
 },
 {
     name:'React',
-    experience:55,
+    experience:68,
     color:'success',
     type:'front-end'
 }]

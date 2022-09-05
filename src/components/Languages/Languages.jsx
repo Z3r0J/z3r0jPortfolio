@@ -60,7 +60,7 @@ export const Languages = () =>{
                 <div className={`card-body border-bottom border-${lang.color} border-3`}>
                   <motion.div variants={textAnimate} className='card-title'>{lang.name}</motion.div>
                   <div className='progress'>
-                    <motion.div variants={bar} className={`progress-bar bg-${lang.color}`} role='progressbar' aria-label={lang.name} aria-valuenow={lang.experience} aria-valuemin='0' aria-valuemax='100' style={{width:`${lang.experience}%`}}>{lang.name}
+                    <motion.div variants={bar} className={`progress-bar bg-${lang.color}`}  role='progressbar' aria-label={lang.name} aria-valuenow={lang.experience} aria-valuemin='0' aria-valuemax='100' style={{width:`${lang.experience}%`,position:"relative",right:`calc(100% - ${lang.experience}%)`,paddingLeft:`calc(100% - ${lang.experience}%)`}}>{lang.name}
                     </motion.div>
                   </div>
                 </div>

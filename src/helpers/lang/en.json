@@ -6,5 +6,7 @@
     "thirdHistory":"My Journey through the programming started when i was 10 years old for a game, past the time i learned HTML, CSS and JS, after that learned C# in high school and improved on that programming language at ITLA.",
     "navHome":"Home",
     "navProjects":"Projects",
-    "programmingLang":"Programming Languages and Tools"
+    "programmingLang":"Programming Languages and Tools",
+    "emailSuccess":"the email was sended sucessfully, I will be in contact soon...",
+    "emailError":"something went wrong..."
 }
