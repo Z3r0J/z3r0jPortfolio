@@ -4,3 +4,7 @@
 .drop-width{
     min-width: 2rem!important;
 }
+.navbar-toggler:focus{
+    outline: none!important;
+    box-shadow: none!important;
+}

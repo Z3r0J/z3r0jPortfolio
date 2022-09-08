@@ -14,7 +14,7 @@ export const Menu = () =>{
       <nav className="navbar navbar-expand-lg bg-dark text-white">
   <div className="container-fluid">
     <a className="navbar-brand text-white fs-2 fw-700" href="#"><span className="text-primary">{title[0]}</span><span className="text-danger">{title[1]}</span></a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button className="navbar-toggler outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <FaList className="navbar-toggler-icon text-white"/>
     </button>
     <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
