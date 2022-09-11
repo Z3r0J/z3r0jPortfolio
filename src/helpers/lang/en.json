@@ -6,7 +6,20 @@
     "thirdHistory":"My Journey through the programming started when i was 10 years old for a game, past the time i learned HTML, CSS and JS, after that learned C# in high school and improved on that programming language at ITLA.",
     "navHome":"Home",
     "navProjects":"Projects",
-    "programmingLang":"Programming Languages and Tools",
+    "programmingLang":"Skills",
     "emailSuccess":"the email was sended sucessfully, I will be in contact soon...",
-    "emailError":"something went wrong..."
+    "emailError":"something went wrong...",
+    "about":"About this Project",
+    "collab":"Collaborators:",
+    "projects":"Projects",
+    "porfolioDesc":"This website contain my projects and more information about me.",
+    "bankingDesc":"Dominican Banking is an app where you can add customer, also add them a new bank account, loan and credit card in the system and make payment and different transaction using a customer.",
+    "pokedexDesc":"Pokedex is an app where you can add a pokemon with its type and region, delete and edit this pokemon. With beautiful UI Interface.",
+    "trailerDesc":"FLJJ Movies is an app created using React and Vanilla Javascript where you can watch movie trailers, this app consume an API created with ASP .NET MVC and C#.",
+    "marketDesc":"EMarket App is like Corotos where people make Advertisements to product and search for people who might be interested in that Product. Using Onion Architecture.",
+    "networkDesc":"SmartNetwork is an interesting app where you can add friends and make post about your life or something you like.",
+    "restaurantDesc":"RestaurantAPI is an API to be consume in a Restaurant System. Using Identity and JWT for the Authentication and Authorization.",
+    "trailerapiDesc":"TrailerMovieAPI is an API to be consume in an App using React and Vanilla JS where you can watch movie trailers.",
+    "estateDesc":"DR Real Estate is an app where you an agent can publish houses to sell and get a customer in Dominican Republic. The customer also add to favorite the house, finds an Agent or their dream house and can get an Account on the website.",
+    "diamondDesc":"It's an Mobile app using React Native and Fake JSON API and fetch the music to play in the Phone also you can add them in favorite."
 }
