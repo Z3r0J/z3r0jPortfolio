@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaGithub } from 'react-icons/fa'
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
 import { cardProjectAnimated } from '../../../helpers/Animation'
 import Text from '../../../helpers/lang/Text'
 import { motion } from 'framer-motion'
@@ -41,9 +41,9 @@ export const ProjectCard = ({ project }) => {
                             </div>
                         </div>
                     </div>
-                    <div className='container-fluid mt-4'>
-                        {project.github!==""?<a href={project.github} target="_blank" className='btn btn-outline-light me-3' style={{width:"45%"}}><FaGithub className='me-2'/>Github</a>:""}
-                        {project.projectUrl!==""?<a href={project.projectUrl} target="_blank" className='btn btn-outline-light me-3' style={{width:"45%"}}>Visit</a>:""}
+                    <div className='container-fluid mt-1'>
+                        {project.github!==""?<a href={project.github} target="_blank" className='btn btn-outline-light me-3 mt-3 btn-project' style={{width:"45%"}}><FaGithub className='me-2'/>Github</a>:""}
+                        {project.projectUrl!==""?<a href={project.projectUrl} target="_blank" className='btn btn-outline-light me-3 mt-3 btn-project' style={{width:"45%"}}><FaExternalLinkAlt className='me-2'/>Visit</a>:""}
                     </div>
                 </div>
             </motion.div>

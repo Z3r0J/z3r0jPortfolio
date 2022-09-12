@@ -1,13 +1,13 @@
 export const cardContactAnimated = {
     offscreen: {
-        y: 400,
+        x: -400,
         opacity: 0
     },
     onscreen: {
-        y: 0,
+        x: 0,
         opacity: 1,
         transition: {
-            type: "tween",
+            type: "spring",
             bounce: 0.3,
             duration: 0.7
         }

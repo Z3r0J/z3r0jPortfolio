@@ -7,7 +7,7 @@ export const MyProjects = [
     collaborator:[],
     image: "#",
     github:"https://github.com/Z3r0J/z3r0jPortfolio",
-    projectUrl:"",
+    projectUrl:"https://jreyes.vercel.app",
     category:"WEB APP"
 },
 {
@@ -18,7 +18,7 @@ export const MyProjects = [
     collaborator:["Jose Miguel Cayetano Marquez","Johanly Ariel Baez Lima"],
     image: "#",
     github:"https://github.com/Z3r0J/DRRealState",
-    projectUrl:"#",
+    projectUrl:"https://drrealestate.somee.com",
     category:"FULLSTACK WEB APP"
 },
 {

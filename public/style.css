@@ -24,6 +24,9 @@ ul{
 }
 
 @media screen and (max-width:470px) {
+    .btn-project{
+        width: 100%!important;
+    }
     .text-name{
         font-size: 9px;
         
