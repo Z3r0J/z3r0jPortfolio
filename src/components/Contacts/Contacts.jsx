@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser'
 import { FaWindowClose } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { cardContactAnimated, inputAnimated } from '../../helpers/Animation';
+import Text from '../../helpers/lang/Text';
 
 export const Contacts = () => {
 
@@ -55,8 +56,8 @@ export const Contacts = () => {
 
 
   return (
-    <div className="row mt-4 mb-3 bg-contacts text-white d-flex justify-content-center">
-        <h3 className='text-white text-center'>Contacts</h3>
+    <div className="row mt-4 mb-3 bg-contacts text-white d-flex justify-content-center" id="contacts">
+        <h3 className='text-white text-center'><Text tid={"contacts"}/></h3>
         <motion.div
         initial={"offscreen"}
         whileInView={"onscreen"}

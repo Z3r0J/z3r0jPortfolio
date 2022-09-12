@@ -21,15 +21,15 @@ const ProgrammingLang=[{
 },
 {
     name:'Bootstrap',
-    experience:95,
+    experience:85,
     color:'info',
     type:'tools'
 
 },
 {
     name:'JWT',
-    experience:85,
-    color:'info',
+    experience:75,
+    color:'success',
     type:'tools'
 
 },
@@ -43,20 +43,20 @@ const ProgrammingLang=[{
 {
     name:'MYSQL',
     experience:75,
-    color:'info',
+    color:'primary',
     type:'tools'
 
 },
 {
     name:'NPM',
-    experience:75,
-    color:'info',
+    experience:65,
+    color:'danger',
     type:'tools'
 
 },
 {
     name:'Javascript',
-    experience:60,
+    experience:80,
     color:'warning',
     type:'backend'
 },
@@ -64,6 +64,36 @@ const ProgrammingLang=[{
     name:'React',
     experience:68,
     color:'success',
+    type:'front-end'
+},
+{
+    name:'VS CODE',
+    experience:80,
+    color:'primary',
+    type:'tools'
+},
+{
+    name:'VS STUDIO',
+    experience:88,
+    color:'danger',
+    type:'tools'
+},
+{
+    name:'HTML',
+    experience:78,
+    color:'danger',
+    type:'front-end'
+},
+{
+    name:'CSS',
+    experience:84,
+    color:'info',
+    type:'front-end'
+},
+{
+    name:'JQUERY',
+    experience:65,
+    color:'warning',
     type:'front-end'
 }]
 

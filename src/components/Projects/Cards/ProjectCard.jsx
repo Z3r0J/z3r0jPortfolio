@@ -1,11 +1,18 @@
 import React from 'react'
 import { FaGithub } from 'react-icons/fa'
+import { cardProjectAnimated } from '../../../helpers/Animation'
 import Text from '../../../helpers/lang/Text'
+import { motion } from 'framer-motion'
 
 export const ProjectCard = ({ project }) => {
     return (
-        <div className='col-xl-5 col-lg-5 col-md-12 mt-2 mb-2'>
-            <div className='card bg-dark rounded-1 shadow shadow-3 border-0 wh-100'>
+        <motion.div className='col-xl-5 col-lg-5 col-md-12 mt-2 mb-2'
+        initial={"offscreen"}
+        whileInView={"onscreen"}
+        viewport={{ once: false, amount: 1 }}
+        transition={{ staggerChildren: 2 }}>
+            <motion.div className='card bg-dark rounded-1 shadow shadow-3 border-0 wh-100'
+            variants={cardProjectAnimated}>
                 <div className='card-header bg-transparent text-white text-center border-0 h6'><span className='fw-bold'>{project.name}</span></div>
                 <div className='card-body'>
                     <div className='d-flex justify-content-around mt-2 mb-3'>
@@ -39,7 +46,7 @@ export const ProjectCard = ({ project }) => {
                         {project.projectUrl!==""?<a href={project.projectUrl} target="_blank" className='btn btn-outline-light me-3' style={{width:"45%"}}>Visit</a>:""}
                     </div>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }

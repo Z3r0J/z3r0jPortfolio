@@ -7,6 +7,7 @@ import { Contacts } from '../Contacts/Contacts';
 import Text from '../../helpers/lang/Text';
 import { Footer } from '../Footer/Footer';
 import { textIndexAnimated } from '../../helpers/Animation';
+import { TimeLine } from '../TimeLine/TimeLine';
 
 const Index = () => {
   return (
@@ -42,15 +43,16 @@ const Index = () => {
                     <Text tid={"thirdHistory"} />
                   </motion.p>
                   <a href='#' className='btn btn-success rounded-2 shadow shadow-2 me-2'><FcFile /> Resume</a>
-                  <a href='#' className='btn btn-light rounded-2 shadow shadow-2'><FcComments /> Contacts</a>
+                  <a href='#contacts' className='btn btn-light rounded-2 shadow shadow-2'><FcComments /> <Text tid={"contacts"}/></a>
                 </motion.div>
               </div>
             </div>
           </motion.div>
         </div>
       </div>
+      <TimeLine/>
       <Languages />
-      <Contacts />
+      <Contacts/>
       <Footer />
     </div>
   )

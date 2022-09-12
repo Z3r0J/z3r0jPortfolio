@@ -85,3 +85,16 @@ export const cardLanguageAnimated = {
         }
     }
 };
+
+export const cardProjectAnimated = {
+    offscreen:{y:400,opacity:0},
+    onscreen:{
+        y:0,
+        opacity:1,
+        transition:{
+            type: "tween",
+            bounce: 0.5,
+            duration: 0.5
+        }
+    }
+}

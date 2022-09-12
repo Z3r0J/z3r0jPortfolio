@@ -12,14 +12,13 @@ export const Languages = () => {
   return !ProgrammingLang ? (
     <div></div>
   ) : (
-    <div className="row mt-4 mb-3 p-3" style={{ background: "#11202b" }}>
+    <div className="row mt-4 mb-3 p-3" style={{ background: "#11202b" }} id="skills">
       <motion.h3
         initial={"offscreen"}
         whileInView={"onscreen"}
         viewport={{ once: false, amount: 1 }}
         variants={textLanguageAnimated}
-        className="text-white fw-700 text-center"
-      >
+        className="text-white fw-700 text-center">
         <Text tid="programmingLang" />
       </motion.h3>
       {ProgrammingLang.map((lang) => {
