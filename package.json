@@ -1,28 +1,27 @@
 {
-  "name": "my-portfolio",
+  "name": "z3r0j-portfolio",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@emailjs/browser": "^3.7.0",
-    "bootstrap": "^5.2.0",
-    "camelcase": "^7.0.0",
-    "emailjs": "^4.0.1",
-    "framer-motion": "^7.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
-    "react-router-dom": "^6.3.0"
+    "next": "^15",
+    "bootstrap": "^5.3",
+    "@emailjs/browser": "^4",
+    "framer-motion": "^11",
+    "react-icons": "^5"
   },
   "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.1",
-    "vite": "^3.0.7"
+    "typescript": "^5",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/node": "^20",
+    "eslint": "^9",
+    "eslint-config-next": "^15"
   }
 }
