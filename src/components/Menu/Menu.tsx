@@ -1,99 +1,166 @@
 'use client';
 
-import { useContext } from 'react';
-import Link from 'next/link';
-import { FaClipboardCheck, FaCode, FaGraduationCap, FaList } from 'react-icons/fa';
-import { IoHomeSharp } from 'react-icons/io5';
+import { useState, useContext, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { LangContext } from '@/i18n/LangContext';
 import Text from '@/i18n/Text';
-import styles from './Menu.module.css';
+import { Container } from '@/components/ui';
+
+const navLinks = [
+  { tid: 'navAbout', href: '#about' },
+  { tid: 'navExperience', href: '#experience' },
+  { tid: 'navProjects', href: '#projects' },
+  { tid: 'navSkills', href: '#skills' },
+  { tid: 'navContact', href: '#contact' },
+];
 
 export default function Menu() {
-  const title = ['<Jean', ' Carlos/>'];
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const langCtx = useContext(LangContext);
-
-  const handleLangChange = (newLang: string) => {
-    langCtx?.handleChangeLanguages(newLang);
-  };
-
   const currentLang = langCtx?.actualLanguage || 'en';
 
+  // Track scroll position for background opacity
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setIsOpen(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
+  const handleLangToggle = () => {
+    langCtx?.handleChangeLanguages(currentLang === 'en' ? 'es' : 'en');
+  };
+
+  const handleNavClick = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg bg-dark text-white">
-      <div className="container-fluid">
-        <Link className="navbar-brand text-white fs-2 fw-700" href="/">
-          <span className="text-primary">{title[0]}</span>
-          <span className="text-danger">{title[1]}</span>
-        </Link>
-        <button
-          className={`navbar-toggler outline-none ${styles.navbarToggler}`}
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <FaList className="navbar-toggler-icon text-white" />
-        </button>
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarSupportedContent"
-        >
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className={`nav-link text-white fs-6 ${styles.menuItem}`} href="/">
-                <IoHomeSharp className="me-2" />
-                <Text tid="navHome" />
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className={`nav-link text-white fs-6 ${styles.menuItem}`} href="/#education">
-                <FaGraduationCap className="me-2" />
-                <Text tid="education" />
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className={`nav-link text-white fs-6 ${styles.menuItem}`} href="/#skills">
-                <FaClipboardCheck className="me-2" />
-                <Text tid="programmingLang" />
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className={`nav-link text-white fs-6 ${styles.menuItem}`} href="/projects">
-                <FaCode className="me-2" />
-                <Text tid="navProjects" />
-              </Link>
-            </li>
-            <li className="nav-item dropdown">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-bg-primary/80 backdrop-blur-xl border-b border-glass-border shadow-lg shadow-black/10'
+          : 'bg-transparent'
+      }`}
+    >
+      <Container>
+        <nav className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <a href="#" className="text-xl font-bold tracking-tight group">
+            <span className="gradient-text">&lt;Jean</span>
+            <span className="text-text-primary group-hover:text-accent-purple transition-colors"> Carlos/&gt;</span>
+          </a>
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
               <a
-                className="nav-link dropdown-toggle text-white"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+                key={link.href}
+                href={link.href}
+                className="relative px-3 py-2 text-sm text-text-secondary hover:text-text-primary transition-colors group"
               >
-                {currentLang === 'en' ? '\u{1F1FA}\u{1F1F8}' : '\u{1F1E9}\u{1F1F4}'}
+                <Text tid={link.tid} />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-0 bg-accent-cyan group-hover:w-3/4 transition-all duration-300" />
               </a>
-              <ul className={`dropdown-menu ${styles.dropWidth} bg-dark`}>
-                {currentLang === 'en' ? (
-                  <li>
-                    <a className="dropdown-item" href="#" onClick={() => handleLangChange('es')}>
-                      {'\u{1F1E9}\u{1F1F4}'}
-                    </a>
-                  </li>
-                ) : (
-                  <li>
-                    <a className="dropdown-item" href="#" onClick={() => handleLangChange('en')}>
-                      {'\u{1F1FA}\u{1F1F8}'}
-                    </a>
-                  </li>
-                )}
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+            ))}
+
+            {/* Language toggle */}
+            <button
+              onClick={handleLangToggle}
+              className="ml-4 flex items-center gap-1.5 rounded-full border border-glass-border px-3 py-1.5 text-sm text-text-secondary hover:text-text-primary hover:border-glass-border-hover transition-all"
+              aria-label="Toggle language"
+            >
+              <span>{currentLang === 'en' ? '\u{1F1FA}\u{1F1F8}' : '\u{1F1E9}\u{1F1F4}'}</span>
+              <span className="text-xs font-mono uppercase">{currentLang}</span>
+            </button>
+
+            {/* Resume CTA */}
+            <a
+              href="/jean-carlos-reyes-cv.pdf"
+              download
+              className="ml-3 rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple px-5 py-2 text-sm font-medium text-white shadow-lg shadow-accent-cyan/10 hover:shadow-accent-cyan/30 hover:scale-105 transition-all duration-300"
+            >
+              Resume
+            </a>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="flex items-center gap-3 md:hidden">
+            {/* Language toggle mobile */}
+            <button
+              onClick={handleLangToggle}
+              className="rounded-full border border-glass-border p-2 text-text-secondary hover:text-text-primary transition-colors"
+              aria-label="Toggle language"
+            >
+              <span className="text-sm">{currentLang === 'en' ? '\u{1F1FA}\u{1F1F8}' : '\u{1F1E9}\u{1F1F4}'}</span>
+            </button>
+
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="relative z-50 p-2 text-text-primary"
+              aria-label="Toggle menu"
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <HiX className="text-2xl" /> : <HiMenuAlt3 className="text-2xl" />}
+            </button>
+          </div>
+        </nav>
+      </Container>
+
+      {/* Mobile menu overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-bg-primary/95 backdrop-blur-xl md:hidden"
+          >
+            <div className="flex flex-col items-center justify-center min-h-screen gap-6 p-8">
+              {navLinks.map((link, idx) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={handleNavClick}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="text-2xl font-medium text-text-secondary hover:text-accent-cyan transition-colors"
+                >
+                  <Text tid={link.tid} />
+                </motion.a>
+              ))}
+              <motion.a
+                href="/jean-carlos-reyes-cv.pdf"
+                download
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+                className="mt-4 rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple px-8 py-3 text-sm font-semibold text-white"
+              >
+                Resume
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

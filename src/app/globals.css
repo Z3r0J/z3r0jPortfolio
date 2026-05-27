@@ -1,37 +1,132 @@
-@font-face {
-  font-family: 'Noto Color Emoji';
-  src: url(https://raw.githack.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoji.ttf);
+@import "tailwindcss";
+
+@theme {
+  /* ===== Color Palette - Dark Glassmorphism ===== */
+  --color-bg-primary: #0a0f1a;
+  --color-bg-secondary: #0f172a;
+  --color-bg-tertiary: #1e293b;
+
+  /* Glass surfaces */
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-glass-hover: rgba(255, 255, 255, 0.06);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-border-hover: rgba(255, 255, 255, 0.15);
+
+  /* Accent colors */
+  --color-accent-cyan: #06b6d4;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-emerald: #10b981;
+  --color-accent-amber: #f59e0b;
+  --color-accent-pink: #ec4899;
+  --color-accent-blue: #3b82f6;
+
+  /* Muted accents for backgrounds */
+  --color-accent-cyan-muted: rgba(6, 182, 212, 0.1);
+  --color-accent-purple-muted: rgba(139, 92, 246, 0.1);
+  --color-accent-emerald-muted: rgba(16, 185, 129, 0.1);
+  --color-accent-amber-muted: rgba(245, 158, 11, 0.1);
+  --color-accent-pink-muted: rgba(236, 72, 153, 0.1);
+  --color-accent-blue-muted: rgba(59, 130, 246, 0.1);
+
+  /* Text colors */
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-text-accent: #06b6d4;
+
+  /* Font families */
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "Fira Code", monospace;
+
+  /* Border radius */
+  --radius-glass: 1rem;
+  --radius-bento: 1.5rem;
+  --radius-pill: 9999px;
+
+  /* Backdrop blur */
+  --blur-glass: 16px;
+  --blur-glass-heavy: 24px;
+
+  /* Shadows */
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-glow-cyan: 0 0 20px rgba(6, 182, 212, 0.15);
+  --shadow-glow-purple: 0 0 20px rgba(139, 92, 246, 0.15);
 }
 
-* {
-  padding: 0;
-  margin: 0;
+/* ===== Custom Utilities ===== */
+@utility glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-glass);
+  box-shadow: var(--shadow-glass);
+}
+
+@utility glass-hover {
+  background: var(--color-glass-hover);
+  border-color: var(--color-glass-border-hover);
+}
+
+@utility gradient-text {
+  background-image: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility gradient-border {
+  border-image: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple)) 1;
+}
+
+@utility text-glow-cyan {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.2);
+}
+
+/* ===== Global Base Styles ===== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: #192732 !important;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
   min-height: 100vh;
 }
 
-ul {
-  list-style: none;
+/* Selection style */
+::selection {
+  background: rgba(6, 182, 212, 0.3);
+  color: var(--color-text-primary);
 }
 
-@media screen and (max-width: 470px) {
-  .btn-project {
-    width: 100% !important;
-  }
-  .text-name {
-    font-size: 9px;
-  }
-  .text-badge {
-    font-size: 11px !important;
-  }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-tertiary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
 }
 
-.text-style {
-  letter-spacing: 2px;
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
