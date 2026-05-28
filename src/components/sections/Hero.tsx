@@ -3,12 +3,12 @@
 import { motion } from 'framer-motion';
 import { FaDownload, FaArrowDown } from 'react-icons/fa';
 import Text from '@/i18n/Text';
-import { Container } from '@/components/ui';
+import { Container, FlagIcon } from '@/components/ui';
 import { heroTextReveal, heroStagger } from '@/lib/animations';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
       {/* Background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-accent-cyan/10 blur-[100px]" />
@@ -32,13 +32,13 @@ export default function Hero() {
           animate="visible"
           className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-4xl"
         >
-          {/* Greeting badge */}
-          <motion.div variants={heroTextReveal} className="mb-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-accent-cyan/20 bg-accent-cyan/5 px-4 py-2 text-sm text-accent-cyan font-mono">
-              <span className="h-2 w-2 rounded-full bg-accent-cyan animate-pulse" />
-              <Text tid="heroGreeting" />
-            </span>
-          </motion.div>
+          {/* Greeting */}
+          <motion.p
+            variants={heroTextReveal}
+            className="text-lg sm:text-xl text-text-secondary"
+          >
+            <Text tid="heroGreeting" /> <FlagIcon country="do" size={22} className="mx-1 align-text-bottom" /> {'👋'}
+          </motion.p>
 
           {/* Name */}
           <motion.h1
@@ -71,14 +71,14 @@ export default function Hero() {
             <a
               href="/jean-carlos-reyes-cv.pdf"
               download
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent-cyan/20 transition-all duration-300 hover:shadow-accent-cyan/40 hover:scale-105"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent-cyan/20 transition-all duration-300 hover:shadow-accent-cyan/40 hover:scale-105"
             >
               <FaDownload className="text-xs transition-transform group-hover:-translate-y-0.5" />
               <Text tid="heroResume" />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-glass-border px-8 py-3.5 text-sm font-semibold text-text-primary backdrop-blur-sm transition-all duration-300 hover:border-glass-border-hover hover:bg-white/5"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-glass-border px-8 py-3.5 text-sm font-semibold text-text-primary backdrop-blur-sm transition-all duration-300 hover:border-glass-border-hover hover:bg-white/5"
             >
               <Text tid="heroContact" />
               <FaArrowDown className="text-xs animate-bounce" />
@@ -91,7 +91,7 @@ export default function Hero() {
             className="mt-12 flex flex-wrap items-center gap-3"
           >
             <span className="text-xs text-text-muted font-mono uppercase tracking-widest">Stack:</span>
-            {['.NET', 'React', 'Node.js', 'Azure', 'SQL Server'].map((tech) => (
+            {['.NET', 'SQL Server', 'Azure', 'React', 'React Native', 'Expo', 'Node.js'].map((tech) => (
               <span
                 key={tech}
                 className="rounded-full border border-white/5 bg-white/[0.02] px-3 py-1 text-xs text-text-secondary font-mono"
@@ -103,12 +103,12 @@ export default function Hero() {
         </motion.div>
       </Container>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on mobile to avoid overlap with tech stack */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="hidden lg:block absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <a href="#about" className="flex flex-col items-center gap-2 text-text-muted hover:text-accent-cyan transition-colors">
           <span className="text-xs font-mono uppercase tracking-widest">Scroll</span>

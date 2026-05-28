@@ -5,10 +5,12 @@ import {
   SiDotnet, SiNodedotjs, SiExpress, SiReact, SiNextdotjs, SiFlutter,
   SiExpo, SiMysql, SiDocker,
   SiGit, SiJirasoftware, SiJavascript,
+  SiOpenai, SiGithubcopilot,
 } from 'react-icons/si';
 import {
   TbApi, TbComponents, TbBuildingArch, TbHexagons, TbStack2,
-  TbBrandAzure, TbSql, TbBrandCSharp,
+  TbBrandAzure, TbSql, TbBrandCSharp, TbLanguage, TbCode,
+  TbBrandOpenai,
 } from 'react-icons/tb';
 import Text from '@/i18n/Text';
 import { Section, GlassCard } from '@/components/ui';
@@ -22,11 +24,17 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   SiExpo, SiMysql, SiDocker,
   SiGit, SiJirasoftware, SiJavascript,
   TbApi, TbComponents, TbBuildingArch, TbHexagons, TbStack2,
+  TbLanguage, TbSql, TbCode,
   // Mapped aliases for icons renamed/missing in react-icons v5
   SiMicrosoftazure: TbBrandAzure,
   SiMicrosoftsqlserver: TbSql,
   SiCsharp: TbBrandCSharp,
   SiBlazor: SiDotnet,
+  // SiClaude doesn't exist in react-icons, use a fallback
+  SiClaude: TbCode,
+  SiOpenai,
+  SiGithubcopilot,
+  TbBrandOpenai,
 };
 
 const categoryIconColors: Record<string, string> = {
@@ -55,12 +63,10 @@ export default function Skills() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
       >
-        <motion.div variants={fadeInUp} className="text-center mb-16">
-          <span className="text-sm font-mono text-accent-cyan uppercase tracking-widest">
+        <motion.div variants={fadeInUp} className="mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold">
             <Text tid="skillsTitle" />
-          </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-bold">
-            Technologies & Tools
+            <span className="text-accent-cyan">.</span>
           </h2>
         </motion.div>
 
@@ -89,10 +95,11 @@ export default function Skills() {
 
         {/* Certifications */}
         <motion.div variants={fadeInUp} className="mt-20">
-          <div className="text-center mb-8">
-            <span className="text-sm font-mono text-accent-purple uppercase tracking-widest">
+          <div className="mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold">
               <Text tid="certsTitle" />
-            </span>
+              <span className="text-accent-purple">.</span>
+            </h2>
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             {certifications.map((cert) => {

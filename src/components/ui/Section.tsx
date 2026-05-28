@@ -16,7 +16,7 @@ export default function Section({
   fullWidth = false,
 }: SectionProps) {
   return (
-    <section id={id} className={`py-20 md:py-28 ${className}`}>
+    <section id={id} className={`py-12 md:py-16 ${className}`}>
       {fullWidth ? children : <Container className={containerClassName}>{children}</Container>}
     </section>
   );

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { FaBriefcase, FaGithub, FaCertificate, FaRocket } from 'react-icons/fa';
 import Text from '@/i18n/Text';
-import { Section, GlassCard } from '@/components/ui';
+import { Section, GlassCard, FlagIcon } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 const stats = [
@@ -31,7 +31,7 @@ export default function About() {
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent-cyan/20 to-accent-purple/20 blur-2xl scale-110" />
             <div className="relative overflow-hidden rounded-2xl border border-glass-border">
               <Image
-                src="/profilephoto.jpg"
+                src="/me.png"
                 alt="Jean Carlos Reyes"
                 width={400}
                 height={400}
@@ -42,7 +42,7 @@ export default function About() {
             </div>
             {/* Floating badge */}
             <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-2 flex items-center gap-2">
-              <span className="text-2xl">&#x1F1E9;&#x1F1F4;</span>
+              <FlagIcon country="do" size={22} />
               <span className="text-sm text-text-secondary">Santo Domingo, DR</span>
             </div>
           </div>
@@ -51,10 +51,11 @@ export default function About() {
         {/* Content side */}
         <div className="space-y-6">
           <motion.div variants={fadeInUp}>
-            <span className="text-sm font-mono text-accent-cyan uppercase tracking-widest">
-              <Text tid="aboutTitle" />
-            </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-text-primary">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="h-px w-8 bg-accent-cyan" />
+              <span className="text-sm text-accent-cyan font-medium"><Text tid="aboutTitle" /></span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-text-primary">
               Fullstack .NET Developer
             </h2>
           </motion.div>
