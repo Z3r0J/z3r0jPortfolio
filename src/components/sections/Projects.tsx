@@ -16,12 +16,10 @@ export default function Projects() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
       >
-        <motion.div variants={fadeInUp} className="text-center mb-16">
-          <span className="text-sm font-mono text-accent-cyan uppercase tracking-widest">
+        <motion.div variants={fadeInUp} className="mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold">
             <Text tid="projectsTitle" />
-          </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-bold">
-            Things I&apos;ve Built
+            <span className="text-accent-cyan">.</span>
           </h2>
         </motion.div>
 
@@ -37,7 +35,7 @@ export default function Projects() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-2">
                     {project.featured && (
-                      <span className="h-2 w-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
+                      <span className="h-2 w-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(96,165,250,0.6)]" />
                     )}
                     <h3 className="text-lg font-semibold text-text-primary">{project.name}</h3>
                   </div>

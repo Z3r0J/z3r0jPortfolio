@@ -18,9 +18,9 @@ export default function GlassCard({
 }: GlassCardProps) {
   const glowShadow =
     glow === 'cyan'
-      ? 'hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]'
+      ? 'hover:shadow-[0_0_30px_rgba(96,165,250,0.15)]'
       : glow === 'purple'
-        ? 'hover:shadow-[0_0_30px_rgba(139,92,246,0.15)]'
+        ? 'hover:shadow-[0_0_30px_rgba(239,68,68,0.15)]'
         : '';
 
   return (

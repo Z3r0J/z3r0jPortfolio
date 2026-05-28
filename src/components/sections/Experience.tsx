@@ -18,12 +18,10 @@ export default function Experience() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
       >
-        <motion.div variants={fadeInUp} className="text-center mb-16">
-          <span className="text-sm font-mono text-accent-cyan uppercase tracking-widest">
+        <motion.div variants={fadeInUp} className="mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold">
             <Text tid="experienceTitle" />
-          </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-bold">
-            Where I&apos;ve Worked
+            <span className="text-accent-cyan">.</span>
           </h2>
         </motion.div>
 
@@ -49,7 +47,7 @@ export default function Experience() {
                   }`}
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-4 md:left-1/2 top-6 h-3 w-3 rounded-full bg-accent-cyan border-2 border-bg-primary -translate-x-1.5 md:-translate-x-1.5 z-10 shadow-[0_0_10px_rgba(6,182,212,0.5)]" />
+                  <div className="absolute left-4 md:left-1/2 top-6 h-3 w-3 rounded-full bg-accent-cyan border-2 border-bg-primary -translate-x-1.5 md:-translate-x-1.5 z-10 shadow-[0_0_10px_rgba(96,165,250,0.5)]" />
 
                   {/* Card */}
                   <div className={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${isLeft ? 'md:pr-8' : 'md:pl-8'}`}>
@@ -113,12 +111,13 @@ export default function Experience() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="mt-28"
+        className="mt-16"
       >
-        <motion.div variants={fadeInUp} className="text-center mb-12">
-          <span className="text-sm font-mono text-accent-purple uppercase tracking-widest">
+        <motion.div variants={fadeInUp} className="mb-8">
+          <h2 className="text-3xl sm:text-4xl font-bold">
             <Text tid="educationTitle" />
-          </span>
+            <span className="text-accent-purple">.</span>
+          </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
