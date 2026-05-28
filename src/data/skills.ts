@@ -37,4 +37,9 @@ export const skills: Skill[] = [
   { name: 'Docker', icon: 'SiDocker', category: 'tools', gridSpan: 'sm' },
   { name: 'Git', icon: 'SiGit', category: 'tools', gridSpan: 'sm' },
   { name: 'Scrum', icon: 'SiJirasoftware', category: 'tools', gridSpan: 'sm' },
+
+  // AI Tools
+  { name: 'Claude', icon: 'TbBrandOpenai', category: 'tools', gridSpan: 'sm' },
+  { name: 'ChatGPT (Codex)', icon: 'SiOpenai', category: 'tools', gridSpan: 'sm' },
+  { name: 'GitHub Copilot', icon: 'SiGithubcopilot', category: 'tools', gridSpan: 'sm' },
 ];

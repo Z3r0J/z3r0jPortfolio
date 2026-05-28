@@ -9,7 +9,7 @@ export const experience: ExperienceEntry[] = [
     period: 'Sept 2024 - Present',
     location: 'Santo Domingo, Dominican Republic',
     description: 'exp1Desc',
-    highlights: ['exp1H1', 'exp1H2', 'exp1H3', 'exp1H4', 'exp1H5'],
+    highlights: ['exp1H1', 'exp1H2', 'exp1H3', 'exp1H4', 'exp1H5', 'exp1H6'],
     stack: ['.NET', 'C#', 'Next.js', 'SQL Server', 'Umbraco', 'Azure'],
   },
   {

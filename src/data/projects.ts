@@ -24,7 +24,7 @@ export const projects: Project[] = [
     description: 'proj3Desc',
     stack: ['.NET 6', 'C#', 'Onion Architecture', 'Identity', 'SQL Server'],
     github: 'https://github.com/Z3r0J/DRRealState',
-    liveUrl: 'https://drrealestate.somee.com',
+    
     stars: 1,
     featured: true,
   },
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     description: 'proj5Desc',
     stack: ['Astro', 'TypeScript'],
     github: 'https://github.com/Z3r0J/fusion-core-apps-website',
-    liveUrl: 'https://fusion-core-apps.vercel.app',
+    liveUrl: 'https://fusioncoreapps.com',
   },
   {
     id: 6,
