@@ -30,3 +30,10 @@ next-env.d.ts
 *.njsproj
 *.sln
 *.sw?
+
+
+# Brainstorming/local
+.superpowers/
+
+# TypeScript build cache
+tsconfig.tsbuildinfo
