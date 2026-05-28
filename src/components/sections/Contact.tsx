@@ -1,7 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaPaperPlane, FaTimes, FaCheck } from 'react-icons/fa';
 import Text from '@/i18n/Text';
@@ -16,39 +15,84 @@ const contactInfo = [
 ];
 
 interface FormValues {
-  from_name: string;
-  user_email: string;
+  name: string;
+  email: string;
   message: string;
+  honeypot: string;
 }
 
 export default function Contact() {
-  const form = useRef<HTMLFormElement>(null);
   const [inputValue, setInputValue] = useState<FormValues>({
-    from_name: '',
-    user_email: '',
+    name: '',
+    email: '',
     message: '',
+    honeypot: '',
   });
+  const [token, setToken] = useState<string | null>(null);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [sending, setSending] = useState(false);
+
+  // Fetch submission token on mount
+  useEffect(() => {
+    let cancelled = false;
+    const fetchToken = async () => {
+      try {
+        const res = await fetch('/api/contact/token');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!cancelled) setToken(data.token);
+      } catch {
+        // silent — user will see error on submit
+      }
+    };
+    fetchToken();
+    return () => { cancelled = true; };
+  }, []);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
+  const refreshToken = async () => {
+    try {
+      const res = await fetch('/api/contact/token');
+      if (res.ok) {
+        const data = await res.json();
+        setToken(data.token);
+      }
+    } catch {
+      // silent
+    }
+  };
+
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.current || sending) return;
+    if (sending) return;
 
     setSending(true);
     try {
-      await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        form.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
-      );
-      setStatus('success');
-      setInputValue({ from_name: '', user_email: '', message: '' });
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: inputValue.name,
+          email: inputValue.email,
+          message: inputValue.message,
+          honeypot: inputValue.honeypot,
+          token,
+        }),
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        setInputValue({ name: '', email: '', message: '', honeypot: '' });
+        // Get fresh token for next submission
+        await refreshToken();
+      } else {
+        setStatus('error');
+        // Refresh token if it expired or was consumed
+        if (res.status === 401) await refreshToken();
+      }
       setTimeout(() => setStatus('idle'), 5000);
     } catch {
       setStatus('error');
@@ -66,14 +110,12 @@ export default function Contact() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <motion.div variants={fadeInUp} className="text-center mb-16">
-          <span className="text-sm font-mono text-accent-cyan uppercase tracking-widest">
+        <motion.div variants={fadeInUp} className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold">
             <Text tid="contactTitle" />
-          </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-bold">
-            Let&apos;s Work Together
+            <span className="text-accent-cyan">.</span>
           </h2>
-          <p className="mt-4 text-text-secondary max-w-md mx-auto">
+          <p className="mt-3 text-text-secondary max-w-md mx-auto">
             <Text tid="contactDescription" />
           </p>
         </motion.div>
@@ -104,17 +146,34 @@ export default function Contact() {
           {/* Form */}
           <motion.div variants={fadeInUp}>
             <GlassCard hover={false} className="p-6 sm:p-8">
-              <form ref={form} onSubmit={sendEmail} className="space-y-5">
+              <form onSubmit={sendEmail} className="space-y-5">
+                {/* Honeypot — hidden from real users, bots fill it */}
+                <div style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }} aria-hidden="true">
+                  <label>
+                    Website
+                    <input
+                      type="text"
+                      name="honeypot"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={inputValue.honeypot}
+                      onChange={handleInput}
+                    />
+                  </label>
+                </div>
+
                 <div>
                   <label className="block text-sm text-text-secondary mb-1.5">
                     <Text tid="contactName" /> <span className="text-accent-cyan">*</span>
                   </label>
                   <input
                     type="text"
-                    name="from_name"
-                    value={inputValue.from_name}
+                    name="name"
+                    value={inputValue.name}
                     onChange={handleInput}
                     required
+                    minLength={2}
+                    maxLength={100}
                     className="w-full rounded-lg border border-glass-border bg-white/[0.02] px-4 py-3 text-sm text-text-primary placeholder-text-muted outline-none transition-all focus:border-accent-cyan/50 focus:ring-1 focus:ring-accent-cyan/20"
                     placeholder="Your name"
                   />
@@ -125,10 +184,11 @@ export default function Contact() {
                   </label>
                   <input
                     type="email"
-                    name="user_email"
-                    value={inputValue.user_email}
+                    name="email"
+                    value={inputValue.email}
                     onChange={handleInput}
                     required
+                    maxLength={200}
                     className="w-full rounded-lg border border-glass-border bg-white/[0.02] px-4 py-3 text-sm text-text-primary placeholder-text-muted outline-none transition-all focus:border-accent-cyan/50 focus:ring-1 focus:ring-accent-cyan/20"
                     placeholder="your@email.com"
                   />
@@ -142,16 +202,17 @@ export default function Contact() {
                     value={inputValue.message}
                     onChange={handleInput}
                     required
+                    minLength={10}
+                    maxLength={2000}
                     rows={5}
                     className="w-full rounded-lg border border-glass-border bg-white/[0.02] px-4 py-3 text-sm text-text-primary placeholder-text-muted outline-none transition-all resize-none focus:border-accent-cyan/50 focus:ring-1 focus:ring-accent-cyan/20"
                     placeholder="Tell me about your project..."
                   />
                 </div>
-                <input type="hidden" name="to_name" value="Jean Carlos Reyes" />
 
                 <button
                   type="submit"
-                  disabled={sending}
+                  disabled={sending || !token}
                   className="w-full flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-accent-cyan to-accent-purple px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent-cyan/20 transition-all duration-300 hover:shadow-accent-cyan/40 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {sending ? (
