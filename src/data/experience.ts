@@ -1,0 +1,46 @@
+import { ExperienceEntry } from '@/types';
+
+export const experience: ExperienceEntry[] = [
+  {
+    id: 1,
+    role: 'Application Development Engineer',
+    company: 'Banco de Reservas',
+    companyUrl: 'https://www.banreservas.com',
+    period: 'Sept 2024 - Present',
+    location: 'Santo Domingo, Dominican Republic',
+    description: 'exp1Desc',
+    highlights: ['exp1H1', 'exp1H2', 'exp1H3', 'exp1H4', 'exp1H5', 'exp1H6'],
+    stack: ['.NET', 'C#', 'Next.js', 'SQL Server', 'Umbraco', 'Azure'],
+  },
+  {
+    id: 2,
+    role: 'Full-stack Developer',
+    company: 'FusionCore Apps (Freelance)',
+    companyUrl: 'https://fusioncoreapps.com',
+    period: 'Mar 2022 - Present',
+    location: 'Remote',
+    description: 'exp2Desc',
+    highlights: ['exp2H1', 'exp2H2'],
+    stack: ['React', 'Next.js', 'Node.js', '.NET', 'Flutter', 'React Native'],
+  },
+  {
+    id: 3,
+    role: 'Software System Analyst',
+    company: 'Direccion General de Migracion',
+    period: 'Oct 2023 - Sept 2024',
+    location: 'Santo Domingo, Dominican Republic',
+    description: 'exp3Desc',
+    highlights: ['exp3H1', 'exp3H2', 'exp3H3'],
+    stack: ['Blazor', '.NET 8', 'React', 'Microservices', 'Next.js'],
+  },
+  {
+    id: 4,
+    role: 'IT Internship',
+    company: 'CCS Holding Group',
+    period: 'Nov 2022 - Mar 2023',
+    location: 'Santo Domingo, Dominican Republic',
+    description: 'exp4Desc',
+    highlights: ['exp4H1', 'exp4H2'],
+    stack: ['Crystal Reports', 'SQL Anywhere', 'Pixel POS'],
+  },
+];
