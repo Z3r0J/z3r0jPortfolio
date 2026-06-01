@@ -142,3 +142,68 @@ body {
     animation: none !important;
   }
 }
+
+/* ===== 404 Page Animations ===== */
+@keyframes glitch-top {
+  0%, 100% { clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); transform: translate(0); }
+  20% { transform: translate(-4px, -2px); }
+  40% { transform: translate(3px, 1px); }
+  60% { clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, -1px); }
+}
+
+@keyframes glitch-bottom {
+  0%, 100% { clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%); transform: translate(0); }
+  20% { transform: translate(3px, 1px); }
+  40% { transform: translate(-3px, -2px); }
+  60% { clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%); transform: translate(2px, 1px); }
+  80% { transform: translate(-2px, 2px); }
+}
+
+@keyframes blink-cursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+.glitch-404 {
+  position: relative;
+  display: inline-block;
+}
+.glitch-404::before,
+.glitch-404::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.glitch-404::before {
+  color: #60a5fa;
+  animation: glitch-top 2.5s infinite linear alternate;
+  text-shadow: -2px 0 #60a5fa;
+}
+.glitch-404::after {
+  color: #ef4444;
+  animation: glitch-bottom 3s infinite linear alternate;
+  text-shadow: 2px 0 #ef4444;
+}
+.blink-cursor {
+  animation: blink-cursor 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-404::before,
+  .glitch-404::after {
+    animation: none;
+  }
+  .blink-cursor {
+    animation: none;
+    opacity: 1;
+  }
+}
