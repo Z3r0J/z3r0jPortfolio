@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { rateLimit } from '@/lib/rate-limit';
-import { verifyToken } from '@/lib/contact-token';
+import { verifyToken, consumeToken } from '@/lib/contact-token';
+import { isOriginAllowed } from '@/lib/origin-check';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -31,11 +32,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid content type' }, { status: 400 });
   }
 
-  // 2. Validate Origin
+  // 2. Validate Origin (exact match, not prefix)
   const origin = request.headers.get('origin') || request.headers.get('referer') || '';
-  const allowed = (process.env.CONTACT_ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
-  const isAllowed = allowed.some(o => origin.startsWith(o));
-  if (!isAllowed) {
+  if (!isOriginAllowed(origin)) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 
@@ -63,9 +62,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  // 6. Token verification
+  // 6. Token verification (does NOT consume yet)
   const tokenCheck = verifyToken(body.token || '');
-  if (!tokenCheck.valid) {
+  if (!tokenCheck.valid || !tokenCheck.nonce) {
     return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
   }
 
@@ -123,6 +122,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Failed to send' }, { status: 500 });
     }
 
+    consumeToken(tokenCheck.nonce);
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error('Contact form error:', error);

@@ -3,9 +3,20 @@ const store = new Map<string, Bucket>();
 
 const MAX_REQUESTS = 3;
 const WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const CLEANUP_THRESHOLD = 1000;
+
+function cleanup(now: number) {
+  for (const [key, bucket] of store.entries()) {
+    if (bucket.resetAt < now) store.delete(key);
+  }
+}
 
 export function rateLimit(ip: string): { ok: boolean; retryAfter?: number } {
   const now = Date.now();
+
+  // Opportunistic cleanup when the map grows large
+  if (store.size > CLEANUP_THRESHOLD) cleanup(now);
+
   const bucket = store.get(ip);
 
   if (!bucket || bucket.resetAt < now) {
@@ -20,13 +31,3 @@ export function rateLimit(ip: string): { ok: boolean; retryAfter?: number } {
   bucket.count += 1;
   return { ok: true };
 }
-
-// Periodic cleanup (runs on every call, cheap)
-function cleanup() {
-  const now = Date.now();
-  for (const [key, bucket] of store.entries()) {
-    if (bucket.resetAt < now) store.delete(key);
-  }
-}
-
-if (store.size > 1000) cleanup();

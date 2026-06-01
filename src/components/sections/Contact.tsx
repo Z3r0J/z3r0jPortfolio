@@ -163,10 +163,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm text-text-secondary mb-1.5">
+                  <label htmlFor="contact-name" className="block text-sm text-text-secondary mb-1.5">
                     <Text tid="contactName" /> <span className="text-accent-cyan">*</span>
                   </label>
                   <input
+                    id="contact-name"
                     type="text"
                     name="name"
                     value={inputValue.name}
@@ -179,10 +180,11 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-text-secondary mb-1.5">
+                  <label htmlFor="contact-email" className="block text-sm text-text-secondary mb-1.5">
                     <Text tid="contactEmail" /> <span className="text-accent-cyan">*</span>
                   </label>
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
                     value={inputValue.email}
@@ -194,10 +196,11 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-text-secondary mb-1.5">
+                  <label htmlFor="contact-message" className="block text-sm text-text-secondary mb-1.5">
                     <Text tid="contactMessage" /> <span className="text-accent-cyan">*</span>
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     value={inputValue.message}
                     onChange={handleInput}

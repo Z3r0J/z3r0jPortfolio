@@ -15,11 +15,11 @@ Personal portfolio SPA for Jean Carlos Reyes. Next.js 15 (App Router) + TypeScri
 
 ## Architecture
 
-**Stack**: Next.js 15 · React 18 · TypeScript · Tailwind CSS v4 · Framer Motion 11 · EmailJS
+**Stack**: Next.js 15 · React 18 · TypeScript · Tailwind CSS v4 · Framer Motion 11 · Resend (server-side API route)
 
 **Entry flow**: `src/app/layout.tsx` (LangProvider + Menu) → `src/app/page.tsx` (single-page with all sections).
 
-**Routing**: Single page with section anchors. The only route is `/`. `not-found.tsx` shows a styled 404 page.
+**Routing**: `/` (single-page portfolio with section anchors), `/social` (link-in-bio), `/api/contact` + `/api/contact/token` (server-side contact API). `not-found.tsx` shows a styled 404 page.
 
 **Sections** (rendered in order on `/`):
 - Hero — gradient name, CTAs, tech stack pills
@@ -27,12 +27,12 @@ Personal portfolio SPA for Jean Carlos Reyes. Next.js 15 (App Router) + TypeScri
 - Experience — vertical timeline with alternating cards + education grid
 - Projects — curated project cards with stack badges
 - Skills — bento grid layout with category-colored cards + certifications
-- Contact — EmailJS form with glassmorphism styling
+- Contact — Resend-backed form with glassmorphism styling
 - Footer — copyright, social links
 
 **i18n**: Custom React Context solution. `src/i18n/LangContext.tsx` + `src/providers/LangProvider.tsx`. Translation JSON files in `src/i18n/{en,es}.json`. The `Text` component renders strings by key. Language persisted in localStorage, read via `useEffect`.
 
-**Data layer**: Typed arrays in `src/data/` (experience, education, projects, skills, certifications, social links). EmailJS credentials in `.env.local`.
+**Data layer**: Typed arrays in `src/data/` (experience, education, projects, skills, certifications, social links). Resend credentials in `.env.local` (server-side only, no `NEXT_PUBLIC_` prefix).
 
 **Design system**: Tailwind CSS v4 with `@theme` tokens in `globals.css`. Custom `@utility` directives: `glass`, `glass-hover`, `gradient-text`, `gradient-border`, `text-glow-cyan`. Dark glassmorphism theme with cyan/purple accent colors.
 
@@ -47,7 +47,7 @@ Personal portfolio SPA for Jean Carlos Reyes. Next.js 15 (App Router) + TypeScri
 - Translation keys must exist in both `en.json` and `es.json`.
 - Animation variants follow `hidden`/`visible` naming for new components, `offscreen`/`onscreen` for legacy.
 - Images use `next/image`. Fonts use `next/font/google` (Inter + JetBrains Mono).
-- EmailJS credentials in `.env.local` with `NEXT_PUBLIC_` prefix.
+- Resend credentials in `.env.local` (server-side only, no `NEXT_PUBLIC_` prefix).
 - Section components live in `src/components/sections/`.
 
 ## Project Structure
@@ -68,4 +68,4 @@ src/
 
 ## Deployment
 
-Vercel with Next.js framework preset. Ensure `NEXT_PUBLIC_EMAILJS_*` env vars are set.
+Vercel with Next.js framework preset. Ensure the following server-side env vars are set: `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL`, `CONTACT_ALLOWED_ORIGINS`, `CONTACT_TOKEN_SECRET`.
